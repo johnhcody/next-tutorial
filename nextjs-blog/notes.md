@@ -34,3 +34,13 @@ export async function getStaticProps() {
 - `getStaticProps` only runs on the server-side. It will never run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
 - Client-side rendering manages the routing dynamically without refreshing the page every time a user requests a different route. But server-side rendering is able to display a fully populated page on the first load for any route of the website, whereas client-side rendering displays a blank page first.
 - `getStaticProps` can only be exported from a page. You can’t export it from non-page files.
+
+Statically gnerating pages with dynamic routes:
+ - if you want to statically generate a page at a path called /posts/<id> where <id> can be dynamic, then create a page in a directory `directory/pages/[id].js`
+  - the file must contain...
+   - a React component to render the page
+   - `getStaticPaths` which returns an array of possible values for `id`
+   - `getStaticProps` which fetches necessary data for the post with `id`
+   - examples: https://nextjs.org/learn/basics/dynamic-routes/dynamic-routes-details
+
+   
